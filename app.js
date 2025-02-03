@@ -29,3 +29,27 @@ function exibirAmigos() {
         listaAmigos.appendChild(item);
     }
 }
+// Função para sortear um amigo aleatoriamente
+function sortearAmigo() {
+    if (amigos.length === 0) {
+        alert("Adicione amigos antes de sortear!");
+        return;
+    }
+
+    // Sorteia um amigo aleatório
+    let amigoSorteado = amigos[Math.floor(Math.random() * amigos.length)];
+
+    // Exibe apenas o nome do amigo sorteado
+    let resultado = document.getElementById("resultado");
+    resultado.textContent = `Amigo sorteado: ${amigoSorteado}`;
+
+    // Remove o amigo sorteado da lista
+    amigos = amigos.filter(amigo => amigo !== amigoSorteado);
+
+    // Atualiza a exibição dos amigos (a lista será limpa após o sorteio)
+    exibirAmigos();
+
+    // Oculta a lista de amigos
+    let listaAmigos = document.getElementById("listaAmigos");
+    listaAmigos.style.display = "none";
+}
